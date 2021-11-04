@@ -80,6 +80,38 @@
         <p>Quote of the day: <span id="quote-goes-here"></span></p>
       </div>
     </div>
+    <div class="container">
+        <div class="card-group">
+
+            <div class="card" style="width: 18rem;">
+                <img src="./images/burnaby-lake.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" id="burnaby_lake">Burnaby Lake</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Read more</a>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="./images/buntzenLake.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" id="bun_lake">Buntzen Lake</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Read more</a>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="./images/mountSeymoure.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" id="mt_sey">Mount Seymoure</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Read more</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
@@ -157,6 +189,19 @@
                     });
       }
       writeHikes();
+
+      function displayHikes() {
+           db.collection("Hikes").get()
+	           .then(allHikes => {
+		           allHikes.forEach(doc => {
+			           var hikeName = doc.data().name; //gets the name field
+			           var hikeID = doc.data().code; //gets the unique ID field
+			           console.log(hikeID);
+			           document.getElementById(hikeID).innerText = hikeName;
+           })
+           })
+                        }
+   displayHikes();
     </script>
   </body>
 </html>
